@@ -52,7 +52,7 @@
                      left join d_v_labmed_patjour t on t.unit_id = pj.diseasecase
                         where PJ.PLAN_DATE =:PD_DATE
                         and t.reg_time is not null
-                        order by t.crockery DESC
+                        order by t.crockery DESC --  сортировка 
             
         ]]>
         <component cmptype="Variable" name="LPU" src="LPU" srctype="session" />
