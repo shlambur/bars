@@ -1,15 +1,5 @@
 <div cmptype="Form" oncreate="base().onCreate();" class="report_main_div"  window_size="210mmx297mm" >
-<style>
-        div.report_main_div {
-            margin: 5mm;
-        }
-        table.table1 {
-		width:100%;
-	}
-	table.table1 td{
-		border: 1px solid black;
-                padding: 3px;
-	}
+
 </style>
 <component cmptype="Script">
 <![CDATA[
@@ -52,7 +42,7 @@
                      left join d_v_labmed_patjour t on t.unit_id = pj.diseasecase
                         where PJ.PLAN_DATE =:PD_DATE
                         and t.reg_time is not null
-                        order by t.crockery DESC --  сортировка 
+                        order by t.crockery DESC 
             
         ]]>
         <component cmptype="Variable" name="LPU" src="LPU" srctype="session" />
