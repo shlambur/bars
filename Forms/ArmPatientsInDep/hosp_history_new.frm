@@ -141,7 +141,7 @@
         }
         Form.onButtonFacialAcc = function () {
 
-            setVar('PERSMEDCARD', getVar('PERSMEDCARD', 1));  /* добавлено на форму ИБ для открытия лицивого счёта*/
+            setVar('PERSMEDCARD', getVar('PERSMEDCARD', 1));  /* на форму ИБдля вызова ЛС*/
                 setVar('AGENT', getVar('AGENT', 1));
 
             openWindow('PersonalAccount/patient_contracts', true, 1222, 684);

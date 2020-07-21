@@ -1,0 +1,39 @@
+<node target="AnotherLPU" pos="after">
+    <component cmptype="Button" name="piANALYSIS_DIRECTION" caption="Направление на анализы"
+               onclick="base().selectAnalysis();"/>
+</node>
+<node target="deleteDIR_DIR_SERV" pos="before">
+    <component cmptype="Script">
+        <![CDATA[
+            Form.selectAnalysis = function() {
+                openWindow({
+                    name: 'Labmed/labmed_analize_new',
+                    vars: {
+                        PERSMEDCARD_ID: getVar('PATIENT'),
+                        REG_VISIT: getVar('VISIT'),
+                        DISEASECASE: getVar('DISEASECASE_ID'),
+                        REG_DIR_SERV: getVar('REG_DIR_SERV'),
+                        HH_DEP: getVar('HH_DEP_ID')
+                    }
+                }, true, 1100, 768).addListener('onafterclose', function() {
+                    if (+getVar('ModalResult')) {
+                        refreshDataSet('DS_DIRECTION_SERVICE_CONTROL');
+                    }
+                });
+            };
+            Form.OnShowNapr = function() {
+                setVar('NEW_VISIT_HELP', getVar('VISIT'));
+                setVar('PRIV_ONLY_DIR', 0);
+                setVar('BPOnlyDir', 'DIRECTIONS_ADD_BY_DS');
+                ['VisServices', 'AnotherLPU', 'piANALYSIS_DIRECTION'].forEach(function(e) {
+                    setControlProperty(e, 'enabled', !(getVar('action') == 'INSERT' || !empty(getVar('DIR_SERVICE', 1))));
+                });
+                executeAction('CheckOnlyDirPrivs', function() {
+                    ['NewNazn', 'NewZap', 'NewZapOper', 'ByTemplate'].forEach(function(e) {
+                        setControlProperty(e, 'enabled', getVar('PRIV_ONLY_DIR') == 1);
+                    });
+                });
+            };
+        ]]>
+    </component>
+</node>

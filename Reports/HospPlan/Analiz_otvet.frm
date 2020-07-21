@@ -1,5 +1,15 @@
 <div cmptype="Form" oncreate="base().onCreate();" class="report_main_div"  window_size="210mmx297mm" >
-
+<style>
+        div.report_main_div {
+            margin: 5mm;
+        }
+        table.table1 {
+		width:100%;
+	}
+	table.table1 td{
+		border: 1px solid black;
+                padding: 3px;
+	}
 </style>
 <component cmptype="Script">
 <![CDATA[
@@ -35,14 +45,14 @@
                     t.direction_service,
                     t. pick_employer_fio,
                     t.PATIENT,
-                    t.ANALYSE,
-                    trunc(((86400*(t.PICK_DATE - t.REG_TIME))/60)/60)-24*(trunc((((86400*(t.PICK_DATE - t.REG_TIME))/60)/60)/24)) hours,
-                    trunc((86400*(t.PICK_DATE - t.REG_TIME))/60)-60*(trunc(((86400*(t.PICK_DATE - t.REG_TIME))/60)/60)) min
+                    t.ANALYSE,  
+                    trunc (((86400*(t.PICK_DATE - t.REG_TIME))/60)/60)-24*(trunc((((86400*(t.PICK_DATE - t.REG_TIME))/60)/60)/24)) hours,
+                    trunc ((86400*(t.PICK_DATE - t.REG_TIME))/60)-60*(trunc(((86400*(t.PICK_DATE - t.REG_TIME))/60)/60)) min
                      FROM D_V_HPK_PLAN_JOURNALS PJ 
                      left join d_v_labmed_patjour t on t.unit_id = pj.diseasecase
                         where PJ.PLAN_DATE =:PD_DATE
                         and t.reg_time is not null
-                        order by t.crockery DESC 
+                    --  order by t.crockery DESC
             
         ]]>
         <component cmptype="Variable" name="LPU" src="LPU" srctype="session" />

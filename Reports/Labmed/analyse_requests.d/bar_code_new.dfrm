@@ -1,0 +1,24 @@
+<div>
+    <attr target="info" name="afterrefresh" value="base().onRefreshDS_INFO();" pos="add"/>
+    <node target="info" pos="after">
+        <component cmptype="Script">
+            <![CDATA[
+                Form.onRefreshDS_INFO = function () {
+                    if (getDataSet('DS_INFO').data[0]) {
+                        var str = getDataSet('DS_INFO').data[0]['REQ_FULL_NUMB'];
+                        setValue('BARCODE', str.replace(/-|\s*/g, ''));
+                    }
+                };
+                Form.onCreateFNKC = function() {
+                    if (!empty(getVar('DIR_SERV_PID'))) {
+                        setVar('DIR_ID', getVar('DIR_SERV_PID'));
+                    }
+                };
+            ]]>
+        </component>
+    </node>
+    <attr target="mainForm" name="oncreate" pos="replace" value="base().onCreateFNKC();"/>
+    <node target="BARCODE" pos="replace">
+        <component cmptype="ModuleImage" name="BARCODE" module="Recips/barcode_sf" flag_check="0"/>
+    </node>
+</div>
