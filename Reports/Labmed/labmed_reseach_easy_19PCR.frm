@@ -409,8 +409,8 @@
 		<thead dataset="ds1" repeate="1">
 			<tr>
 				<td>
-					<component style="margin: 6px 0; width:48px; height:48px;" cmptype="Image" src="LpuLogo/logo.png"/>
-			<!--		<component cmptype="Image" src="LpuLogo/$lpu$/logo.png" width="60px"/> -->
+					
+					<component cmptype="Image" src="LpuLogo/$lpu$/logo.png" width="60px"/> 
 				</td>
 				<td style="text-align: right;" colspan="4">
 					<component cmptype="Label" captionfield="FULLADDRESS"/>
@@ -427,10 +427,20 @@
 					<component cmptype="Label" captionfield="CODE_OKPO"/>
 					<component cmptype="Label" captionfield="CONTACTSFAX"/>
 					<component cmptype="Label" captionfield="CONTACTSTELREG"/>
+					
 				</td>
 			</tr>
+						<tr>
+						<td colspan="5"><component cmptype="Label" caption="Лицензия № ФС-99-01-009750 от 14 мая 2020 на осуществление медицинской деятельности. " /> </td>
+						</tr>
+						<tr>
+						<td colspan="5"><component cmptype="Label" caption="Санитарно-эпидимиологическое заключение № 77.МУ.02.000.М.000092.07.02 от 27 июля 2020  о соответсвии государственным санитарно-эпидимиологическим правилам " /></td>
+						</tr>
+						<tr>
+						<td colspan="5"> <component cmptype="Label" caption="  и нормативам (Безопасность работ с микроорганизмами III IV групп патогенности (опастности) и возбудителями паразитарных болезней)" /> </td>
+						</tr>
 			<tr>
-				<td colspan="4">
+				<td colspan="5">
 					<hr/>
 					<br/>
 				</td>
@@ -690,9 +700,7 @@
 				<td style="font-size:9pt;text-align:center;font-weight: bold;" width="15%">
 					<component cmptype="Label" caption="Результат"/>
 				</td>
-				<td style="font-size:9pt;text-align:center;font-weight: bold;" width="15%">
-					<component cmptype="Label" caption="Ед. изм."/>
-				</td>
+				
 				<td style="font-size:9pt;text-align:center;font-weight: bold;" width="30%">
 					<component cmptype="Label" caption="Реф.значение"/>
 				</td>
@@ -711,16 +719,14 @@
 						<component cmptype="Label" captionfield="RES_VALUE" name="RES_VALUE"/>
 						<component cmptype="Label" captionfield="RAZNICA" name="RAZNICA"/>
 					</td>
-					<td style="font-size:9pt;text-align:center;">
-						<component cmptype="Label" captionfield="MEASURE"/>
-					</td>
+					
 					<td style="font-size:9pt;text-align:center;">
 						<div style="display:inline-block;" dataset="DS_RESULT_REF"  distinct="REF_VALUE" repeate="0" detail="true" keyfield="RESULT_ID" parentfieldsdata="{0:'RESULT_ID'}">
 							  <component cmptype="Label" captionfield="REF_VALUE"/>
 						</div>
 					</td>
 					<td>
-						<div style="font-size:9pt;text-align:left;padding-left:5px;">
+						<div style="font-size:9pt;text-align:center;padding-left:5px;">
 							<component cmptype="Label" captionfield="DATA2" hintfield="DATA2"/>  <!--Изменена лата забора  старое значение RESEARCH_DATE-->
 							<component cmptype="Label" captionfield="RESEARCH_TIME" hintfield="RESEARCH_TIME"/>
 						</div>
@@ -730,7 +736,16 @@
 		</table>
 	</div>
 	<br/>
-	<div>  <b>Интерпретацию полученных результатов проводит врач в совокупности с данными анамнеза, клиническими данными и результатами других диагностических исследований</b></div>
+	<div>  <b>  При получении положительного результата  рекомендована консультация  врача </b></div>
+	<div>  <b>Комментарии:</b></div>
+<div>  
+<I>
+"РНК не обнаружена": в анализируемом образце РНК коронавируса СО\/Ю-19 отсутствует или его концентрация ниже чувствительности тест-системы. Результат "РНК не обнаружена" является показателем отсутствия возбудителя на момент взятия мазка из носоглотки/ротоглотки. Повторное исследование проводить согласно рекомендациям Роспотребнадзора.
+Внимание! Отрицательный результат лабораторного исследования на коронавирус СО\/Ю-19 не отменяет карантинных мер, если они были рекомендованы Роспотребнадзором. Для получения консультации по карантинным мерам обратитесь, пожалуйста, в Единый консультационный центр Роспотребнадзора по тел. 8-800-555-49-43.
+Результаты исследований на коронавирус СОМ О-19 в обязательном порядке передаются в территориальный орган Роспотребнадзора.
+</I>
+</div>
+
 	<table style="width:100%">
 		<tr>
 			<td>
