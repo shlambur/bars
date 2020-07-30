@@ -270,7 +270,7 @@
             <table class="header-table">
                 <tr>
                    <td cmptype="tmp" name="LPU_NAME_TD">
-                       <span class="field">
+                       <span class="field-sh">
                            <component cmptype="Label" dataset="DS_LPU_SHORT_NAME" captionfield="LPU_SHORT_NAME"/>
                        </span>
                        <div class="sign">наименование учреждения</div>
@@ -607,7 +607,7 @@
         }
         .field {
             border-bottom: 1px solid #000;
-            text-align:center;
+            
             padding: 0 2px;
             display: inline-block;
             vertical-align: text-bottom;
@@ -628,6 +628,17 @@
             font-weight: bold;
             border-bottom: 1px solid #000;
             line-height: 15pt;
+        }
+        .field-sh {
+            border-bottom: 1px solid #000;
+            text-align:center;
+            padding: 0 2px;
+            display: inline-block;
+            vertical-align: text-bottom;
+            height: 14pt;
+            line-height: 18pt;
+            width: 100%;
+            font-weight: bold;
         }
     </style>
 </div>
