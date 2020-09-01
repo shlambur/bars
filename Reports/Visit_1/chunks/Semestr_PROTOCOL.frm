@@ -2,12 +2,21 @@
 onshow="onShowBlockInVisit('Form_PROTOCOL','Label_PROTOCOL_SIGN')">
   <component cmptype="DataSet" name="dsVisitPROTOCOL">
     select
-    max(case when f.TEMPLATE_FIELD = 'PROTOCOL' then f.STR_VALUE else null end) PROTOCOL,
-    max (case when F.TEMPLATE_FIELD ='004'then f.STR_VALUE else null end) APARAT,
-    max (case when F.TEMPLATE_FIELD ='003'then f.NUM_VALUE else null end) DOZA,
-    max (case when F.TEMPLATE_FIELD ='001'then f.NUM_VALUE else null end) KOL,
-    max (case when F.TEMPLATE_FIELD ='002'then f.NUM_VALUE else null end) RAZMER1,
-    max (case when F.TEMPLATE_FIELD ='007'then f.NUM_VALUE else null end) RAZMER2,
+    max (case when f.TEMPLATE_FIELD ='PPLOD' then f.STR_VALUE else null end) PPLOD,
+    max (case when F.TEMPLATE_FIELD ='BRAZMER'then f.STR_VALUE else null end) BRAZMER,
+    max (case when F.TEMPLATE_FIELD ='RAZZH'then f.STR_VALUE else null end) RAZZH,
+    max (case when F.TEMPLATE_FIELD ='DLB'then f.STR_VALUE else null end) DLB,
+    max (case when F.TEMPLATE_FIELD ='RAZP'then f.STR_VALUE else null end) RAZP,  
+    max (case when F.TEMPLATE_FIELD ='SROK'then f.STR_VALUE else null end) SROK,
+    max (case when F.TEMPLATE_FIELD ='MP'then f.STR_VALUE else null end) MP,        
+    max (case when F.TEMPLATE_FIELD ='RP'then f.STR_VALUE else null end) RP,   
+    max (case when F.TEMPLATE_FIELD ='CHSS'then f.STR_VALUE else null end) CHSS,  
+    max (case when F.TEMPLATE_FIELD ='LK'then f.STR_VALUE else null end) LK,  
+    max (case when F.TEMPLATE_FIELD ='TP'then f.STR_VALUE else null end) TP,
+    max (case when F.TEMPLATE_FIELD ='ST'then f.STR_VALUE else null end) ST,
+    max (case when F.TEMPLATE_FIELD ='KV'then f.STR_VALUE else null end) KV,
+    max (case when F.TEMPLATE_FIELD ='TM'then f.STR_VALUE else null end) TM,
+    max (case when F.TEMPLATE_FIELD ='DSHM'then f.STR_VALUE else null end) DSHM,
     decode(max(case when f.TEMPLATE_FIELD in ('PROTOCOL') then trim(f.STR_VALUE) else null end),
     null, 0, 1) SIGN
     
@@ -25,14 +34,25 @@ onshow="onShowBlockInVisit('Form_PROTOCOL','Label_PROTOCOL_SIGN')">
   <div style="display:none">
         <component cmptype="Label" name="Label_PROTOCOL_SIGN" captionfield="SIGN"/>
   </div>
-  <div class="TP" >Протокол исследования :<component cmptype="Label" name="TEXT_PROTOCOL"  formated="true" captionfield="PROTOCOL"/></div>
-  <div class="TP" >Исследование провендено на : <component cmptype="Label" name="TEXT_APARAT"  formated="true" captionfield="APARAT"/></div>
-  <div class="TP" >Доза : <component cmptype="Label" name="TEXT_DOZA"  formated="true" captionfield="DOZA"/></div>
-  <div class="TP" >Количество плёнки : <component cmptype="Label" name="TEXT_KOL"  formated="true" captionfield="KOL"/></div>
-  <div class="RZ1" >Размер : <component cmptype="Label" name="TEXT_RAZMER1"  formated="true" captionfield="RAZMER1"/></div>
-  <div class="RZ2" >X <component cmptype="Label" name="TEXT_RAZMER2"  formated="true" captionfield="RAZMER2"/></div>
+  <div class="TV" >Определяется один плод  в головном , тазовом положении</div>
+  <div class="TV" > Положение плода :<component cmptype="Label" name="POLOZH_PLODA"  formated="true" captionfield="PPLOD"/> </div>
+  <div class="TV" >Бипариенталный размер головки : <component cmptype="Label" name="BRAZMER"  formated="true" captionfield="BRAZMER"/>мм.</div>
+  <div class="TV" >Размер живота : <component cmptype="Label" name="RAZZH"  formated="true" captionfield="RAZZH"/>мм.</div>
+  <div class="TV" >Длинна бедра : <component cmptype="Label" name="DLB"  formated="true" captionfield="DLB"/>   мм.</div>
+  <div class="TV" >Размеры : <component cmptype="Label" name="RAZP"  formated="true" captionfield="RAZP"/>
+  <component cmptype="Label" name="SROK"  formated="true" captionfield="SROK"/> неделям беременности </div>
+  <div class="TV" > Предпологаемая масса плода : <component cmptype="Label" name="MP"  formated="true" captionfield="MP"/>   г.</div>
+  <div class="TV" > Предпологаемая рост плода : <component cmptype="Label" name="RP"  formated="true" captionfield="RP"/>   см.</div>
+  <div class="TV" > Частота сердечных сокращений : <component cmptype="Label" name="CHSS"  formated="true" captionfield="CHSS"/>   уд/мин.</div>
+  <div class="TV" > Локализация плаценты : <component cmptype="Label" name="LK"  formated="true" captionfield="LK"/></div>
+  <div class="TV" > Толщина плаценты: <component cmptype="Label" name="TP"  formated="true" captionfield="TP"/></div>
+  <div class="TV" > Структурность плаценты: <component cmptype="Label" name="ST"  formated="true" captionfield="ST"/></div>
+  <div class="TV" > Колличество воды: <component cmptype="Label" name="KV"  formated="true" captionfield="KV"/></div>
+  <div class="TV" > Тонус миометрия: <component cmptype="Label" name="TM"  formated="true" captionfield="TM"/></div>
+  <div class="TV" > Данных о наличии уродства плода нет </div>
+  <div class="TV" > Длинна шейки матки: <component cmptype="Label" name="DSHM"  formated="true" captionfield="DSHM"/> мм, канал сомкнут</div>
   <style>
-   .TP
+   .TV
     {
     width:600px;
     margin-left:80px;

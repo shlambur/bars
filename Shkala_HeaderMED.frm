@@ -88,7 +88,7 @@
 	</tr>
         
         <tr>
-          <td  class="shapka"> Отеление Ультразвуковой диагностики </td>
+          <td  class="shapka">  </td>
 	</tr>
         
 
