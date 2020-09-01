@@ -4,7 +4,7 @@ onshow="onShowBlockInVisit('Form_PROTOCOL','Label_PROTOCOL_SIGN')">
     select  
    ROST,
    VES,
-    VES / power(ROST,2) as TOTAL
+     round (VES / power(ROST,2),2) as TOTAL
 
 from (
     select 
@@ -15,12 +15,6 @@ from (
     <component cmptype="Variable" name="VISIT" src="VISIT" srctype="var" get="v0"/>
   
   </component>
-
-
-
-
-
-
 
   <component cmptype="DataSet" name="dsVisitImages">
       select vfc.BLOB_VALUE         IMAGE_ID
@@ -34,9 +28,9 @@ from (
         <component cmptype="Label" name="Label_PROTOCOL_SIGN" captionfield="SIGN"/>
   </div>
   
-  <div class="TV" >Рост : <component cmptype="Label" name="ROST"  captionfield="ROST"/></div>
-  <div class="TV" >Вес : <component cmptype="Label" name="VES"  captionfield="VES"/></div>
-  <div class="TV" >ИНДЕКС МАССЫ ТЕЛА : <component cmptype="Label" name="TOTAL" captionfield="TOTAL"/></div>
+  <div class="TV" >Рост : <component cmptype="Label" name="ROST"  captionfield="ROST"/> см.</div>
+  <div class="TV" >Вес : <component cmptype="Label" name="VES"  captionfield="VES"/> кг.</div>
+  <div class="TV" >Индекс массы тела : <component cmptype="Label" name="TOTAL" captionfield="TOTAL"/></div>
   <div class="TV" ><component cmptype="Image" src="Shkala/$lpu$/Sh_Ketle.png" width="700px" height="300"/> </div>
 
 
