@@ -11,7 +11,9 @@ CB4,
 CB5,
 CB6,
 CB7,
-CB1+CB2+CB3+CB4+CB5+CB6+CB7 as ALLCHEK,
+(select count( *) from D_V_VISIT_FIELDS f
+    where f.PID = :VISIT
+    and   num_value = 1) as ALLCHEK,
 CB1_NAME,
 CB2_NAME,
 CB3_NAME,
@@ -40,7 +42,9 @@ from (
     where f.PID = :VISIT
     and   num_value = 1),D_V_USR_FNKC_CALC_TIMI t
     
-     WHERE CB1+CB2+CB3+CB4+CB5+CB6+CB7 = t.RISK_POINT
+      WHERE (select count( *) from D_V_VISIT_FIELDS f
+    where f.PID = :VISIT
+    and   num_value = 1)  = t.RISK_POINT
 	
     <component cmptype="Variable" name="VISIT" src="VISIT" srctype="var" get="v0"/>
   
@@ -64,55 +68,65 @@ from (
         <component cmptype="Label" name="Label_PROTOCOL_SIGN" captionfield="SIGN"/>
   </div>
   
-  
-<table border="0" style="margin-left:120px;">
+ <table border="0" style="margin-left:100px;">
   <tr>
-    <td class="RK"><component cmptype="Label" name="CB1_NAME"  captionfield="CB1_NAME"/>:</td><td><component cmptype="Label" name="CB1"  captionfield="CB1"/>  </td>
+    <td class="RK" style="text-align:center;">Фактор риска</td><td class="RT">Число баллов  </td>
   </tr>
   <tr>
-    <td class="RK"><component cmptype="Label" name="CB2_NAME"  captionfield="CB2_NAME"/> :</td><td><component cmptype="Label" name="CB2"  captionfield="CB2"/>  </td>
+    <td class="RK">Возраст 65 лет:</td><td class="RT"><component cmptype="Label" name="CB1"  captionfield="CB1"/>  </td>
   </tr>
   <tr>
-    <td class="RK"><component cmptype="Label" name="CB3_NAME"  captionfield="CB3_NAME"/> :</td><td><component cmptype="Label" name="CB3"  captionfield="CB3"/>  </td>
+    <td class="RK">Наличие трех и более факторов риска атеросклероза :</td><td class="RT"><component cmptype="Label" name="CB2"  captionfield="CB2"/>  </td>
   </tr>
   <tr>
-    <td class="RK"><component cmptype="Label" name="CB3_NAME"  captionfield="CB3_NAME"/> :</td><td><component cmptype="Label" name="CB3"  captionfield="CB3"/>  </td>
+    <td class="RK">Ранее выявленный стеноз коронарной артерии более 50% диаметра :</td><td class="RT"><component cmptype="Label" name="CB3"  captionfield="CB3"/>  </td>
   </tr>
   <tr>
-    <td class="RK"><component cmptype="Label" name="CB4_NAME"  captionfield="CB4_NAME"/> :</td><td><component cmptype="Label" name="CB4"  captionfield="CB4"/>  </td>
+    <td class="RK">Ранее выявленный стеноз коронарной артерии более 50% диаметра :</td><td class="RT"><component cmptype="Label" name="CB3"  captionfield="CB3"/>  </td>
   </tr>
   <tr>
-    <td class="RK"><component cmptype="Label" name="CB5_NAME"  captionfield="CB5_NAME"/> :</td><td><component cmptype="Label" name="CB5"  captionfield="CB5"/>  </td>
+    <td class="RK">Подъем или депрессия сегмента ST на ЭКГ при поступлении :</td><td class="RT"><component cmptype="Label" name="CB4"  captionfield="CB4"/>  </td>
   </tr>
   <tr>
-    <td class="RK"><component cmptype="Label" name="CB6_NAME"  captionfield="CB6_NAME"/> :</td><td><component cmptype="Label" name="CB6"  captionfield="CB6"/>  </td>
+    <td class="RK">Два и более приступа стенокардии за последние 24 часа :</td><td class="RT"><component cmptype="Label" name="CB5"  captionfield="CB5"/>  </td>
   </tr>
   <tr>
-    <td class="RK"><component cmptype="Label" name="CB7_NAME"  captionfield="CB7_NAME"/> :</td><td><component cmptype="Label" name="CB7"  captionfield="CB7"/>  </td>
+    <td class="RK">Прием аспирина в течение последних 7 суток :</td><td class="RT"><component cmptype="Label" name="CB6"  captionfield="CB6"/>  </td>
+  </tr>
+  <tr>
+    <td class="RK">Повышение маркеров некроза миокарда :</td><td class="RT"><component cmptype="Label" name="CB7"  captionfield="CB7"/>  </td>
   </tr>
 </table>
   
-  
-  <div class="TV" > Всего балов <component cmptype="Label" name="ALLCHEK" captionfield="ALLCHEK" caption="Всего балов"/> </div>
-  <div class="TV" > Риск <component cmptype="Label" name="RISK_DEAD" captionfield="RISK_DEAD" caption="Всего балов"/> </div>
-    
+  <div style="height:20px"></div>
+  <div class="TV" > Всего балов: <component cmptype="Label" name="ALLCHEK" captionfield="ALLCHEK" caption="Всего балов"/> </div>
+  <div class="TV" > Риск смерти или инфаркта миокарда в ближайшие 2 недели: <component cmptype="Label" name="RISK_DEAD" captionfield="RISK_DEAD" caption="Всего балов"/> %</div>
+     <div style="height:20px"></div>
 
 
   <div class="TV" ><component cmptype="Image" src="Shkala/$lpu$/Sh_TIMI.jpg" width="700px" height="300"/> </div>
-  
-
 
  
   
   <style>
     .RK
     {
-      border-bottom:0px solid ;
-      text-align: center;
+      
+      text-align: left;
       width: 500px;
       font-weight: 600;
       padding: 5px;
+    border: 1px solid;
     }
+    
+   .RT
+   {
+   border: 2px solid;
+   text-align: center;
+      width: 100px;
+      font-weight: 600;
+      padding: 5px;
+   }
    .TV
     {
     width:600px;
