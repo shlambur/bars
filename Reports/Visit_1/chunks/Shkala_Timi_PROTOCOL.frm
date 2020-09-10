@@ -70,31 +70,29 @@ from (
   
  <table border="0" style="margin-left:100px;">
   <tr>
-    <td class="RK" style="text-align:center;">Фактор риска</td><td class="RT">Число баллов  </td>
+    <td class="RK" style="text-align:center;">Фактор риска</td><td class="RT">Баллы  </td>
   </tr>
   <tr>
-    <td class="RK">Возраст 65 лет:</td><td class="RT"><component cmptype="Label" name="CB1"  captionfield="CB1"/>  </td>
+    <td class="RK">Возраст более 65 лет</td><td class="RT"><component cmptype="Label" name="CB1"  captionfield="CB1"/>  </td>
   </tr>
   <tr>
-    <td class="RK">Наличие трех и более факторов риска атеросклероза :</td><td class="RT"><component cmptype="Label" name="CB2"  captionfield="CB2"/>  </td>
+    <td class="RK">Наличие трех и более факторов риска атеросклероза</td><td class="RT"><component cmptype="Label" name="CB2"  captionfield="CB2"/>  </td>
   </tr>
   <tr>
-    <td class="RK">Ранее выявленный стеноз коронарной артерии более 50% диаметра :</td><td class="RT"><component cmptype="Label" name="CB3"  captionfield="CB3"/>  </td>
+    <td class="RK">Ранее выявленный стеноз коронарной артерии более 50% диаметра</td><td class="RT"><component cmptype="Label" name="CB3"  captionfield="CB3"/>  </td>
+  </tr>
+
+  <tr>
+    <td class="RK">Подъем или депрессия сегмента ST на ЭКГ при поступлении</td><td class="RT"><component cmptype="Label" name="CB4"  captionfield="CB4"/>  </td>
   </tr>
   <tr>
-    <td class="RK">Ранее выявленный стеноз коронарной артерии более 50% диаметра :</td><td class="RT"><component cmptype="Label" name="CB3"  captionfield="CB3"/>  </td>
+    <td class="RK">Два и более приступа стенокардии за последние 24 часа</td><td class="RT"><component cmptype="Label" name="CB5"  captionfield="CB5"/>  </td>
   </tr>
   <tr>
-    <td class="RK">Подъем или депрессия сегмента ST на ЭКГ при поступлении :</td><td class="RT"><component cmptype="Label" name="CB4"  captionfield="CB4"/>  </td>
+    <td class="RK">Прием аспирина в течение последних 7 суток</td><td class="RT"><component cmptype="Label" name="CB6"  captionfield="CB6"/>  </td>
   </tr>
   <tr>
-    <td class="RK">Два и более приступа стенокардии за последние 24 часа :</td><td class="RT"><component cmptype="Label" name="CB5"  captionfield="CB5"/>  </td>
-  </tr>
-  <tr>
-    <td class="RK">Прием аспирина в течение последних 7 суток :</td><td class="RT"><component cmptype="Label" name="CB6"  captionfield="CB6"/>  </td>
-  </tr>
-  <tr>
-    <td class="RK">Повышение маркеров некроза миокарда :</td><td class="RT"><component cmptype="Label" name="CB7"  captionfield="CB7"/>  </td>
+    <td class="RK">Повышение маркеров некроза миокарда</td><td class="RT"><component cmptype="Label" name="CB7"  captionfield="CB7"/>  </td>
   </tr>
 </table>
   
@@ -121,7 +119,7 @@ from (
     
    .RT
    {
-   border: 2px solid;
+   border: 1px solid;
    text-align: center;
       width: 100px;
       font-weight: 600;
