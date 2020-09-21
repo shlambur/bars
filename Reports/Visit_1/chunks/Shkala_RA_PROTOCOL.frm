@@ -8,7 +8,7 @@ onshow="onShowBlockInVisit('Form_PROTOCOL','Label_PROTOCOL_SIGN')">
    VASH,
    TJC,
    SJC,
-   r.description DESCRIPTION
+   r.description DESCRIPTION 
 
 from (
     select 
