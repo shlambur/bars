@@ -31,7 +31,8 @@
     <![CDATA[
             
             select   
-    lr_j.research_date RESEARCH_DATE ,
+    lr_j.research_date RESEARCH_REG ,
+    lp.pick_date RESEARCH_DATE,
     lr_j.research_name,
     lr_sp.str_value,
     lp.patient
@@ -62,6 +63,7 @@
 <table   class="TCOV"  style="width: 100%;" > 
     <tr>
 <td class="tdn" ><component cmptype="Label" caption="№ П/П"/></td> 
+<td class="tdsh" ><component cmptype="Label" caption="Дата забора   "/></td> 
 <td class="tdsh" ><component cmptype="Label" caption="Дата проведения исследования "/></td> 
 <td  class="tdsh"><component cmptype="Label" caption="Наименование исследования"/></td>
 <td  class="tdsh"><component cmptype="Label" caption="Пациент"/></td> 
@@ -69,6 +71,7 @@
     </tr >
         <tr dataset="DS_STAC_ANALIZ" repeate="0" onclone="base().setCount()" >
         <td class="tdn"><component cmptype="Label" name="COUNTi" captionfield="COUNTi" /></td>
+        <td class="td"><component cmptype="Label" name="RESEARCH_DATE" captionfield="RESEARCH_REG" /></td>
         <td class="td"><component cmptype="Label" name="RESEARCH_DATE" captionfield="RESEARCH_DATE" /></td>
         <td class="td"><component cmptype="Label" name="RESEARCH_NAME" captionfield="RESEARCH_NAME" /></td>
         <td class="td"><component cmptype="Label" name="PATIENT" captionfield="PATIENT" /></td>
@@ -88,14 +91,14 @@
     .td  {
         border: 1px solid black;
         padding: 8px;  
-        width: 23%;
+        width: 18%;
 
     }
     .tdsh  {
         border: 1px solid black;
         font-weight: 600;
         padding: 8px;  
-        width: 23%;
+        width: 18%;
         
 
     }
