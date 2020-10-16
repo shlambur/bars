@@ -36,9 +36,24 @@
     lr_sp.str_value,
     lp.patient,
     
+    (select count(*) 
+    from(select lr_sp.str_value 
+      from D_V_LABMED_RSRCH_JOUR lr_j
+ join D_V_LABMED_RSRCH_JOURSP lr_sp on lr_j.ID = lr_sp.PID
+ join D_V_LABMED_PATJOUR lp on lp.ID = lr_j.PATJOUR
+ join D_V_DIRECTION_SERVICES ds on ds.ID = lp.DIRECTION_SERVICE
+
+    where lr_j.research in ('14660','14780','14800')
+    and ds.serv_status ='1'
+  
+    and lr_sp.val_result = '1'
+    and lr_j.research_date >= :PD_DATE
+     and lr_sp.str_value like 'Положительный')) as POL,
+    
     
      ( select count(*)  as Total
-    from (select   
+             from (
+    select   
     lr_j.research_date RESEARCH_REG ,
     lp.pick_date RESEARCH_DATE,
     lr_j.research_name,
@@ -52,7 +67,8 @@
  join D_V_DIRECTION_SERVICES ds on ds.ID = lp.DIRECTION_SERVICE
 
     where lr_j.research in ('14660','14780','14800')
-    and ds.serv_status ='1'   
+    and ds.serv_status ='1'
+   
     and lr_sp.val_result = '1'
     and lr_j.research_date >= :PD_DATE  )) as total
 
@@ -64,8 +80,9 @@
 
     where lr_j.research in ('14660','14780','14800')
     and ds.serv_status ='1'
+    
     and lr_sp.val_result = '1'
-    and lr_j.research_date >= :PD_DATE 
+    and lr_j.research_date >= :PD_DATE
               
         ]]>
         
@@ -98,9 +115,11 @@
 
         </tr>
 </table>
-<div  class="div">  <component cmptype="Label" caption=" Всего за периуд :"/>
+<div  class="div">  <component cmptype="Label" caption=" Проведено тестов с подозрением  на  CoV2 :"/>
 <component cmptype="Label" name="TOTAL" captionfield="TOTAL" />
-<component cmptype="Label" caption=" "/>
+&#160; &#160; &#160;
+<component cmptype="Label" caption=" Положительных тестов:"/>
+<component cmptype="Label" name="POL" captionfield="POL" />
 </div>
 
 
