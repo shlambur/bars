@@ -29,8 +29,16 @@
 
 <component cmptype="DataSet" name="DS_STAC_ANALIZ">
     <![CDATA[
-            
             select   
+    lr_j.research_date RESEARCH_REG ,
+    lp.pick_date RESEARCH_DATE,
+    lr_j.research_name,
+    lr_sp.str_value,
+    lp.patient,
+    
+    
+     ( select count(*)  as Total
+    from (select   
     lr_j.research_date RESEARCH_REG ,
     lp.pick_date RESEARCH_DATE,
     lr_j.research_name,
@@ -44,10 +52,21 @@
  join D_V_DIRECTION_SERVICES ds on ds.ID = lp.DIRECTION_SERVICE
 
     where lr_j.research in ('14660','14780','14800')
-    and ds.serv_status ='1'
-    --and  to_char(cast(lr_j.research_date as date),'dd-mm-yy') = to_char( cast( current_timestamp as date)-  INTERVAL '1' DAY,  'dd-mm-yy')
+    and ds.serv_status ='1'   
     and lr_sp.val_result = '1'
-    and lr_j.research_date >= :PD_DATE      
+    and lr_j.research_date >= :PD_DATE  )) as total
+
+
+ from D_V_LABMED_RSRCH_JOUR lr_j
+ join D_V_LABMED_RSRCH_JOURSP lr_sp on lr_j.ID = lr_sp.PID
+ join D_V_LABMED_PATJOUR lp on lp.ID = lr_j.PATJOUR
+ join D_V_DIRECTION_SERVICES ds on ds.ID = lp.DIRECTION_SERVICE
+
+    where lr_j.research in ('14660','14780','14800')
+    and ds.serv_status ='1'
+    and lr_sp.val_result = '1'
+    and lr_j.research_date >= :PD_DATE 
+              
         ]]>
         
         <component cmptype="Variable" name="PD_DATE" src="PD_DATE" srctype="var" get="pd_date"/>
@@ -79,7 +98,10 @@
 
         </tr>
 </table>
-
+<div  class="div">  <component cmptype="Label" caption=" Всего за периуд :"/>
+<component cmptype="Label" name="TOTAL" captionfield="TOTAL" />
+<component cmptype="Label" caption=" "/>
+</div>
 
 
 <style>
@@ -87,6 +109,7 @@
     border: 1px solid black;
     font-family: 'Times New Roman', Times, serif;
     margin-top: 10px;
+    margin-bottom: 20px;
     }
     .td  {
         border: 1px solid black;
@@ -104,17 +127,16 @@
     }
     .tdn  {
         border: 1px solid black;
-        font-weight: 600;
+        font-weight: 500;
         padding: 8px;  
         width: 8%;
         text-align: center;
         
-        
-
     }
-    .Div {
-
-
+    .div {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        font-weight: 600;
 
     }  
 
