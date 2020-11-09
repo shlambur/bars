@@ -34,15 +34,18 @@
   select
     t.LPU LPU,
     t.REG_TIME ,
-    replace(TO_CHAR(t.REG_DATE,'dd Month yyyy'),'рь','ря') date_reg,
+    t.REG_DATE,
+    t.VISIT_DATE,
+    replace(translate(TO_CHAR(t.REG_DATE,'dd Month yyyy','nls_date_language = RUSSIAN'),'ьй','яя')
+    ,'т ','та') date_reg,
     t.SE_NAME,
     t.PATIENT_FIO,
     t.PAYMENT_KIND,
     t2.FIO  Vrach,
     t2.SPECIALITY,
     t2.DEPARTMENT ,
-    t.SERV_STATUS,
-    c.DEBT_SUMM,
+    replace(t.SERV_STATUS,1,'Оказано') SERV_STATUS,
+    c.SUMM,
     t2.DP_KIND_NAME
             from   d_v_dir_serv_prescriptions t
              left join D_V_EMPLOYERS t2 on t2.ID = t.REG_EMPLOYER
@@ -101,10 +104,10 @@
                 <td class="td"><component cmptype="Label" captionfield="SPECIALITY"/></td>
                 <td class="td"><component cmptype="Label" captionfield="DP_KIND_NAME"/></td>
                 <td class="td"><component cmptype="Label" captionfield="PAYMENT_KIND"/></td>
-                <td class="td"><component cmptype="Label" captionfield="REC_DATE"/></td>
+                <td class="td"><component cmptype="Label" captionfield="VISIT_DATE"/></td>
                 <td class="td"><component cmptype="Label" captionfield="SE_NAME"/></td>
                 <td class="td"><component cmptype="Label" captionfield="DEPARTMENT"/></td>
-                <td class="td"><component cmptype="Label" captionfield="DEBT_SUMM"/></td>
+                <td class="td"><component cmptype="Label" captionfield="SUMM"/></td>
                 <td class="td"><component cmptype="Label" captionfield="SERV_STATUS"/></td>
                 
         </tr>
